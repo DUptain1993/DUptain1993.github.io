@@ -27,7 +27,7 @@ function getNextLinkNumber() {
 // Function to generate a valid link
 function generateLink(type) {
     const linkNumber = getNextLinkNumber();
-    return `https://DUptain1993.github.io/Botimus_Prime/generate-link.html?link=${linkNumber}&type=${type}`;
+    return `https://DUptain1993.github.io/Botimus_Prime/index.html?link=${linkNumber}&type=${type}`;
 }
 
 // Command handler for generating Xbox PlayPass gift card link
