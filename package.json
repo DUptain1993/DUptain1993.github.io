@@ -1,0 +1,25 @@
+{
+  "name": "botimus_prime",
+  "version": "1.0.0",
+  "description": "zero-day exploit using embedded javascript",
+  "homepage": "https://github.com/DUptain1993/Botimus_Prime#readme",
+  "bugs": {
+    "url": "https://github.com/DUptain1993/Botimus_Prime/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DUptain1993/Botimus_Prime.git"
+  },
+  "license": "ISC",
+  "author": "Mr_FKRY",
+  "type": "commonjs",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "node-telegram-bot-api": "^0.63.0"
+  }
+}

