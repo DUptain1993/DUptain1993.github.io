@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abyssal Verses - A gothic poetry community for dark souls and mystical wordsmiths. Share cursed poetry, join rituals, and embrace the shadows.">
+    <meta name="keywords" content="gothic poetry, dark poetry, occult writing, witchy community, horror poetry">
+    <title>Abyssal Verses - Descend Into Dark Poetry</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+DW+Pica:ital@0;1&family=Creepster&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== CSS VARIABLES & RESET ===== */
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --accent-red: #8b0000;
+            --accent-purple: #4a0e4e;
+            --accent-gold: #d4af37;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-color: #333;
+            --glow-red: rgba(139, 0, 0, 0.6);
+            --glow-purple: rgba(74, 14, 78, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IM Fell DW Pica', serif;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--accent-purple) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, var(--glow-red) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--glow-purple) 0%, transparent 50%);
+            opacity: 0.3;
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: rgba(10, 10, 10, 0.9);
+            border-bottom: 2px solid var(--accent-red);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px var(--glow-red);
+            animation: flicker 3s infinite;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+            text-shadow: 0 0 8px var(--glow-red);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent-red);
+            background: transparent;
+            color: var(--text-primary);
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--accent-red);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px var(--glow-red);
+        }
+
+        .btn-primary {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+            text-shadow: 0 0 20px var(--glow-red);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero .cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Decorative elements */
+        .pentagram {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pentagram:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .pentagram:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
+        .pentagram:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 4s; }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-gold);
+            text-shadow: 0 0 15px var(--glow-purple);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--glow-red) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px var(--glow-red);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        /* ===== POETRY SHOWCASE ===== */
+        .showcase {
+            background: rgba(26, 26, 26, 0.6);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .poem-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(10, 10, 10, 0.8);
+            border: 2px solid var(--accent-red);
+            padding: 3rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .poem-container::before,
+        .poem-container::after {
+            content: '☠';
+            position: absolute;
+            font-size: 2rem;
+            color: var(--accent-red);
+            opacity: 0.5;
+        }
+
+        .poem-container::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .poem-container::after {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .poem-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .poem-author {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .poem-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ===== COMMUNITY STATS ===== */
+        .stats {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid var(--accent-purple);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--accent-red);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 2px solid var(--accent-red);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== MODAL STYLES ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--secondary-bg);
+            border: 2px solid var(--accent-red);
+            padding: 3rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--accent-red);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: 'IM Fell DW Pica', serif;
+            border-radius: 5px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 10px var(--glow-red);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">⛧ Abyssal Verses</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#explore">Explore</a></li>
+                <li><a href="#rituals">Rituals</a></li>
+                <li><a href="#coven">Coven</a></li>
+                <li><a href="#grimoire">Grimoire</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn" onclick="openModal('signin')">Sign In</button>
+                <button class="btn btn-primary" onclick="openModal('signup')">Join the Abyss</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="pentagram">⛤</div>
+        <div class="pentagram">⛧</div>
+        <div class="pentagram">☠</div>
+
+        <h1>Descend Into Darkness</h1>
+        <p class="tagline">"Where shadows whisper and verses bleed"</p>
+
+        <div class="cta">
+            <button class="btn btn-primary" onclick="openModal('signup')">Begin Your Ritual</button>
+            <button class="btn">Explore the Abyss</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">✦ The Dark Arts ✦</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="feature-icon">📜</span>
+                <h3>Cursed Poetry</h3>
+                <p>Craft your darkest verses with our mystical editor. Format with haunted fonts, embed chants, and publish to the void. Tag your work with genres like Necromancy, Eldritch Horrors, or Vampiric Sonnets.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🕯️</span>
+                <h3>Shadow Profiles</h3>
+                <p>Create your gothic persona with customizable avatars—witch hats, demonic horns, raven familiars. Earn badges like "Master of Shadows" for your contributions to the darkness.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔮</span>
+                <h3>Ritual Challenges</h3>
+                <p>Participate in weekly poetry rituals: "Summon a Sonnet," "Haiku from Hell," "Ballad of the Banshee." Compete for Ritual Points and unlock exclusive content from the Coven Elite.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">👁️</span>
+                <h3>Community Coven</h3>
+                <p>Join forums for dark discussions, critique circles, and collaborative writing. Vote with skulls and roses, follow fellow poets, and send encrypted cursed letters through private messaging.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🗝️</span>
+                <h3>Grimoire Library</h3>
+                <p>Discover trending verses, search by mood and theme, and receive personalized recommendations. Our algorithms learn your taste for the macabre and suggest poems that will haunt you.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">⚰️</span>
+                <h3>Coven Elite</h3>
+                <p>Ascend to premium membership for ad-free immersion, custom themes (Blood Moon, Victorian Mourning), early access to features, and exclusive collaborations with renowned dark poets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poetry Showcase -->
+    <section class="showcase">
+        <h2 class="section-title">✦ Featured Verse ✦</h2>
+
+        <div class="poem-container">
+            <h3 class="poem-title">Whispers in the Abyss</h3>
+            <p class="poem-author">— by ShadowWitch92</p>
+
+            <div class="poem-text">
+                In depths where light dare not descend,<br>
+                Where ancient shadows twist and bend,<br>
+                I hear the voices, cold and deep,<br>
+                Of those who walk while others sleep.<br><br>
+
+                The moon bleeds crimson in the sky,<br>
+                As ravens circle, caw, and cry,<br>
+                And I, a vessel for the night,<br>
+                Embrace the darkness, shun the light.
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Stats -->
+    <section class="stats">
+        <div class="stat-card">
+            <span class="stat-number">6,666</span>
+            <span class="stat-label">Dark Souls</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-number">13,420</span>
+            <span class="stat-label">Cursed Verses</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-number">666</span>
+            <span class="stat-label">Active Rituals</span>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Eternal Shadows</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Abyssal Verses</h4>
+                <p>A sanctuary for dark souls and mystical wordsmiths. Embrace the shadows, share your verses, join the coven.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#trending">Trending Verses</a></li>
+                    <li><a href="#genres">Dark Genres</a></li>
+                    <li><a href="#rituals">Poetry Rituals</a></li>
+                    <li><a href="#challenges">Weekly Challenges</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#forums">Dark Forums</a></li>
+                    <li><a href="#guidelines">Community Guidelines</a></li>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Follow the Shadows</h4>
+                <div class="social-links">
+                    <a href="#">🦇</a>
+                    <a href="#">🕷️</a>
+                    <a href="#">🌙</a>
+                    <a href="#">⛧</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 Abyssal Verses. All rights reserved. | <a href="#privacy">Privacy</a> | <a href="#terms">Terms</a></p>
+            <p style="font-style: italic; margin-top: 0.5rem;">"In darkness, we find our words"</p>
+        </div>
+    </footer>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('signup')">×</span>
+            <h2 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 2rem; text-align: center;">Join the Abyss</h2>
+
+            <form id="signupForm">
+                <div class="form-group">
+                    <label>Shadow Name</label>
+                    <input type="text" placeholder="e.g., ShadowWitch92" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email (Sealed in Blood)</label>
+                    <input type="email" placeholder="your.email@abyss.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password (Encrypt Your Soul)</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Complete the Ritual</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
+                Already haunting these halls? <a href="#" onclick="closeModal('signup'); openModal('signin');" style="color: var(--accent-red);">Sign In</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('signin')">×</span>
+            <h2 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 2rem; text-align: center;">Return to Darkness</h2>
+
+            <form id="signinForm">
+                <div class="form-group">
+                    <label>Shadow Name or Email</label>
+                    <input type="text" placeholder="Enter your identity" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Enter the Abyss</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">
+                Lost in the shadows? <a href="#" style="color: var(--accent-red);">Recover Account</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Modal Functions
+        function openModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal on background click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Form Submissions (placeholder - would connect to backend)
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupForm = document.getElementById('signupForm');
+            const signinForm = document.getElementById('signinForm');
+
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('🕯️ Ritual complete! Check your email to verify your account.');
+                    closeModal('signup');
+                });
+            }
+
+            if (signinForm) {
+                signinForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('⛧ Welcome back to the darkness...');
+                    closeModal('signin');
+                    // Would redirect to dashboard
+                });
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add cursor trail effect (optional enhancement)
+        document.addEventListener('mousemove', function(e) {
+            // Could add particle effects or cursor trails here
+        });
+    </script>
+</body>
+</html>
